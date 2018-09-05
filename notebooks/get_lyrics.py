@@ -39,6 +39,8 @@ def get_artists_songs(genius_client, artists_names, verbose=False, overwrite=Fal
                 filename, artists_name))
         else:
             artist_object = genius_client.search_artist(artists_name, max_songs=None, verbose=verbose)
+            if not os.path.isdir('./data'): os.mkdir('./data')
+            if not os.path.isdir('./data/lyrics_by_artist'): os.mkdir('./data/lyrics_by_artist')
             genius_client.save_artists(artist_object, filename=filename, overwrite=overwrite)
 
 
